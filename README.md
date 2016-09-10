@@ -1,3 +1,4 @@
 # smartbox
 
-this is the official website for jquery.smartbox.js
+
+this is the [jquery.smartbox.js official site](http://smartbox.huangsw.com/)
