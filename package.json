@@ -1,0 +1,26 @@
+{
+  "name": "jquery.smartbox",
+  "version": "1.0.0",
+  "description": "this is the [jquery.smartbox.js official site](http://smartbox.huangsw.com/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huangshuwei/official-site-for-smartbox.git"
+  },
+  "author": "huang shuwei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huangshuwei/official-site-for-smartbox/issues"
+  },
+  "homepage": "https://github.com/huangshuwei/official-site-for-smartbox#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0",
+    "pump": "^1.0.1"
+  }
+}
