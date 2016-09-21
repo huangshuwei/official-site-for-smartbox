@@ -56,7 +56,7 @@ $(function(){
         isShowFooter:false,
         width:500,
         height:300,
-        content:'<p>smartbox.js 是一款基于jquery 的<span style="color: red;">开源的</span>弹出层插件，它小巧但功能强大，允许用户在一个界面同时弹出多个对话框。弹出的内容支持多种形式，样式简洁多样。想要了解更多可以查看<a href="http://smartbox.huangsw/cn/introduce.html">官方文档</a>。 </p>',
+        content:'<p class="introduce_msg">smartbox.js 是一款基于jquery 的<span style="color: red;">开源的</span>弹出层插件，它小巧但功能强大，允许用户在一个界面同时弹出多个对话框。弹出的内容支持多种形式，样式简洁多样。想要了解更多可以查看<a target="_blank" href="http://smartbox.huangsw.com/cn/introduce.html">官方文档</a>。 查看源码以及demo可以访问<a href="https://github.com/huangshuwei/jquery.smartbox" target="_blank">我的github</a>。</p>',
         isAutoShow:false
     });
 
@@ -67,7 +67,7 @@ $(function(){
 </script>
     </div>
     <!--基本设置 End-->
-    <!--内容来自标签 Start-->
+    <!--内容来自html标签 Start-->
     <div class="section">
         <h2>
             <a id="anchor_contentByHtmlElement">内容来自html标签</a>
@@ -88,7 +88,7 @@ $(function(){
                     </div>
                     <div class="smartBox_body">
                         <p>smartbox.js 是一款基于jquery 的<span style="color: red;">开源的</span>弹出层插件，它小巧但功能强大，允许用户在一个界面同时弹出多个对话框。
-                        弹出的内容支持多种形式，样式简洁多样。想要了解更多可以查看<a href="http://smartbox.huangsw/cn/index.html">官方文档</a>。
+                            弹出的内容支持多种形式，样式简洁多样。想要了解更多可以查看<a target="_blank" href="http://smartbox.huangsw.com/cn/introduce.html">官方文档</a>。查看源码以及demo可以访问<a href="https://github.com/huangshuwei/jquery.smartbox" target="_blank">我的github</a>。
                         </p>
                     </div>
                     <div class="smartBox_footer">
@@ -99,18 +99,18 @@ $(function(){
             </div>
  <pre class="prettyprint" style="display:none;">
 &lt;div id=&quot;contentByHtmlElement&quot; style=&quot;display:none;&quot;&gt;
-    &lt;div class=&quot;smartBox_header&quot;&gt;
-        标题
-    &lt;/div&gt;
-    &lt;div class=&quot;smartBox_body&quot;&gt;
-        &lt;p&gt;smartbox.js 是一款基于jquery 的&lt;span style=&quot;color: red;&quot;&gt;开源的&lt;/span&gt;弹出层插件，它小巧但功能强大，允许用户在一个界面同时弹出多个对话框。
-        弹出的内容支持多种形式，样式简洁多样。想要了解更多可以查看&lt;a href=&quot;http://smartbox.huangsw/cn/index.html&quot;&gt;官方文档&lt;/a&gt;。
-        &lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;smartBox_footer&quot;&gt;
-        footer 内容
-    &lt;/div&gt;
-&lt;/div&gt;
+            &lt;div class=&quot;smartBox_header&quot;&gt;
+                标题
+            &lt;/div&gt;
+            &lt;div class=&quot;smartBox_body&quot;&gt;
+                &lt;p&gt;smartbox.js 是一款基于jquery 的&lt;span style=&quot;color: red;&quot;&gt;开源的&lt;/span&gt;弹出层插件，它小巧但功能强大，允许用户在一个界面同时弹出多个对话框。
+                    弹出的内容支持多种形式，样式简洁多样。想要了解更多可以查看&lt;a target=&quot;_blank&quot; href=&quot;http://smartbox.huangsw.com/cn/introduce.html&quot;&gt;官方文档&lt;/a&gt;。查看源码以及demo可以访问&lt;a                          href=&quot;https://github.com/huangshuwei/jquery.smartbox&quot; target=&quot;_blank&quot;&gt;我的github&lt;/a&gt;。
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;smartBox_footer&quot;&gt;
+                footer 内容
+            &lt;/div&gt;
+        &lt;/div&gt;
 &lt;a id=&quot;contentByHtmlElement_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
 </pre>
         </div>
@@ -136,7 +136,7 @@ $(function(){
             <a id="anchor_ajaxRequestHtml">异步请求html</a>
         </h2>
         <p>
-            sasa
+            smartbox 支持异步获取html内容，这样就允许弹出内容单独作为一个页面。
         </p>
         <ul class="tabs">
             <li class="active"><a href="javascript:;" class="tab-output">异步请求html</a></li>
@@ -168,8 +168,7 @@ $(function(){
             },
             title:'smartbox 简介',
             width:500,
-            height:330,
-            closeType:'in',// 'in':关闭图标在弹层内部右上角； 'out':关闭图标在弹层外部右上角 |type:string
+            height:300,
             isAutoShow:false,
             isShowFooter:false
         });
