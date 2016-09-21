@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>smartbox</title>
-    <!--<link href="../dist/css/libs_examples.min.css?v=1.0.0" rel="stylesheet" />-->
+    <link href="../dist/css/libs_examples.min.css?v=1.0.0" rel="stylesheet" />
 
 
-    <link href="../src/css/main.css" rel="stylesheet" />
+   <!-- <link href="../src/css/main.css" rel="stylesheet" />
     <link href="../public/css/smartbox/jquery.smartbox.css" rel="stylesheet" />
-    <link href="../public/css/prettify/prettify.css" rel="stylesheet" />
+    <link href="../public/css/prettify/prettify.css" rel="stylesheet" />-->
 
 </head>
-<body>
+<body style="overflow-y: scroll;">
 <div class="mainContaner">
     <div>
         <h1><a href="introduce.html">jquery.smartbox</a></h1>
         <ul class="menu">
-            <li style="width:130px"><a href="introduce.html">introduce</a></li>
-            <li class="active" style="width:130px"><a href="examples.html">examples</a></li>
-            <li style="width:130px"><a href="api.html">api</a></li>
-            <li style="width:160px"><a href="#">fork on github</a></li>
-            <li style="width:130px"><a href="#">download</a></li>
+            <li><a style="width:130px"  href="introduce.html">introduce</a></li>
+            <li class="active"><a style="width:130px" href="examples.html">examples</a></li>
+            <li><a style="width:130px" href="api.html">api</a></li>
+            <li><a style="width:160px" href="#">fork on github</a></li>
+            <li><a style="width:130px" href="#">download</a></li>
         </ul>
     </div>
 
@@ -180,11 +180,265 @@ $(function(){
 </script>
     </div>
     <!--异步请求html End-->
+    <!--异步请求image Start-->
+    <div class="section">
+        <h2>
+            <a id="anchor_ajaxRequestImage">异步请求image</a>
+        </h2>
+        <p>
+            smartbox 支持异步获取图片
+        </p>
+        <ul class="tabs">
+            <li class="active"><a href="javascript:;" class="tab-output">异步请求image</a></li>
+            <li><a href="javascript:;" class="tab-html">HTML</a></li>
+            <li><a href="javascript:;" class="tab-js">JavaScript</a></li>
+        </ul>
+        <div class="tabContainer">
+            <div class="operation">
+                <div id="ajaxRequestImage" style="display: none;"></div>
+                <a id="ajaxRequestImage_close" href="javascript:void(0);">open box</a>
+            </div>
+            <pre class="prettyprint" style="display:none;">
+&lt;div id=&quot;ajaxRequestImage&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;a id=&quot;ajaxRequestImage_close&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
+</pre>
+        </div>
+<script type="text/javascript">
+    $(function(){
+        $("#ajaxRequestImage").smartbox({
+            type:'option',// 'option':title、content、footer 内容来自html；'option':title、content、footer 内容来自配置 |type string
+            ajaxSetting:{
+                url : 'http://smartbox.huangsw.com/demo/imgs/Vincent_big.jpg',
+                contentType:'img',// 'html':异步加载的内容为html;'img':异步加载的内容为图片 |type:string
+                type : 'GET',
+                isShowLoading : true,// 是否显示加载效果 |type:bool
+                loadingType:'img',// 'img':加载中以图片的效果展示；'text':加载中以文字的形式展示 |type:string
+                errorContent:'<span style="color:red;">请关闭弹窗重新再试！</span>'
+            },
+            title:'异步获取图片',
+            width:495,
+            height:610,
+            headerHeight:0,
+            closeType:'out',
+            isAutoShow:false,
+            isShowTitle:false,
+            isShowFooter:false
+        });
+
+        $("#ajaxRequestImage_close").click(function () {
+            $("#ajaxRequestImage").smartbox('open');
+        });
+    })
+</script>
+    </div>
+    <!--异步请求image End-->
+    <!--打开和关闭 Start-->
+    <div class="section">
+        <h2>
+            <a id="anchor_openAndClose">打开和关闭</a>
+        </h2>
+        <p>
+            提供打开和关闭的操作
+        </p>
+        <ul class="tabs">
+            <li class="active"><a href="javascript:;" class="tab-output">打开和关闭</a></li>
+            <li><a href="javascript:;" class="tab-html">HTML</a></li>
+            <li><a href="javascript:;" class="tab-js">JavaScript</a></li>
+        </ul>
+        <div class="tabContainer">
+            <div class="operation">
+                <div id="openAndClose" style="display: none;"></div>
+                <a id="openAndClose_open" href="javascript:void(0);">open box</a>
+            </div>
+            <pre class="prettyprint" style="display:none;">
+&lt;div id=&quot;openAndClose&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;a id=&quot;openAndClose_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
+</pre>
+        </div>
+<script type="text/javascript">
+    $(function () {
+        $("#openAndClose").smartbox({
+            title: '打开和关闭操作',
+            width: 500,
+            height: 300,
+            content:'<p class="introduce_msg">smartbox.js 是一款基于jquery 的<span style="color: red;">开源的</span>弹出层插件，它小巧但功能强大，允许用户在一个界面同时弹出多个对话框。弹出的内容支持多种形式，样式简洁多样。想要了解更多可以查看<a target="_blank" href="http://smartbox.huangsw.com/cn/introduce.html">官方文档</a>。 查看源码以及demo可以访问<a href="https://github.com/huangshuwei/jquery.smartbox" target="_blank">我的github</a>。</p>',
+            footer:'<a id="openAndClose_close" href="javascript:void(0);">close box</a>',
+            isAutoShow:false,
+            isCloseOnOverlayClick: false, // |type:bool
+            overlayOpacity: 0.3, // 遮罩层的透明度 0.1~1  |type:float
+            isShowClose: false // 是否显示关闭图标 |type:bool
+        });
+
+        $("#openAndClose_open").click(function () {
+            $("#openAndClose").smartbox('open');
+        });
+
+        $("#openAndClose_close").click(function () {
+            $("#openAndClose").smartbox('close');
+        });
+    })
+</script>
+    </div>
+    <!--打开和关闭 End-->
+    <!--支持多个弹层 Start-->
+    <div class="section">
+        <h2>
+            <a id="anchor_multipleBox">支持多个弹层</a>
+        </h2>
+        <p>
+            提供打开和关闭的操作
+        </p>
+        <ul class="tabs">
+            <li class="active"><a href="javascript:;" class="tab-output">支持多个弹层</a></li>
+            <li><a href="javascript:;" class="tab-html">HTML</a></li>
+            <li><a href="javascript:;" class="tab-js">JavaScript</a></li>
+        </ul>
+        <div class="tabContainer">
+            <div class="operation">
+                <div id="multipleBox1" style="display: none;"></div>
+                <div id="multipleBox2" style="display: none;"></div>
+                <a id="multipleBox1_open" href="javascript:void(0);">open box1</a>
+            </div>
+            <pre class="prettyprint" style="display:none;">
+&lt;div id=&quot;multipleBox1&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;multipleBox2&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;a id=&quot;multipleBox1_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box1&lt;/a&gt;
+</pre>
+        </div>
+<script type="text/javascript">
+    $(function () {
+        $("#multipleBox1").smartbox({
+            title: '这是box1',
+            width: 700,
+            height: 500,
+            content:'<p class="introduce_msg"><a id="multipleBox2_open" href="javascript:void(0);">open box2</a></p>',
+            isAutoShow:false,
+            isShowFooter:false,
+            zIndex:9998
+        });
+
+        $("#multipleBox2").smartbox({
+            title: '这是box2',
+            width: 300,
+            height: 200,
+            content: '<p class="introduce_msg">smartbox 支持多个弹层</p>',
+            footer:'box2',
+            isAutoShow:false,
+            zIndex:9999
+        });
+
+        $("#multipleBox1_open").click(function () {
+            $("#multipleBox1").smartbox('open');
+        });
+
+        $("#multipleBox2_open").click(function () {
+            $("#multipleBox2").smartbox('open');
+        });
+    })
+</script>
+    </div>
+    <!--支持多个弹层 End-->
+    <!--关闭之前事件 Start-->
+    <div class="section">
+        <h2>
+            <a id="anchor_event-beforeClose">关闭之前事件</a>
+        </h2>
+        <p>
+            支持关闭弹层之前调用方法。
+        </p>
+        <ul class="tabs">
+            <li class="active"><a href="javascript:;" class="tab-output">关闭之前事件</a></li>
+            <li><a href="javascript:;" class="tab-html">HTML</a></li>
+            <li><a href="javascript:;" class="tab-js">JavaScript</a></li>
+        </ul>
+        <div class="tabContainer">
+            <div class="operation">
+                <div id="event-beforeClose" style="display: none;"></div>
+                <a id="event-beforeClose_open" href="javascript:void(0);">open box</a>
+            </div>
+            <pre class="prettyprint" style="display:none;">
+&lt;div id=&quot;event-beforeClose&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;a id=&quot;event-beforeClose_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
+</pre>
+        </div>
+<script type="text/javascript">
+    $(function(){
+        $("#event-beforeClose").smartbox({
+            title:'标题',
+            isShowFooter:false,
+            width:500,
+            height:300,
+            content:'<p class="introduce_msg">smartbox.js 是一款基于jquery 的<span style="color: red;">开源的</span>弹出层插件，它小巧但功能强大，允许用户在一个界面同时弹出多个对话框。弹出的内容支持多种形式，样式简洁多样。想要了解更多可以查看<a target="_blank" href="http://smartbox.huangsw.com/cn/introduce.html">官方文档</a>。 查看源码以及demo可以访问<a href="https://github.com/huangshuwei/jquery.smartbox" target="_blank">我的github</a>。</p>',
+            beforeClose:function () { // 关闭前调用的事件,返回true 则会触发关闭 |type:function
+                // 此处替换成你要处理的业务逻辑
+                return confirm('确定要关闭？')
+            },
+            isAutoShow:false
+        });
+
+        $("#event-beforeClose_open").click(function () {
+            $("#event-beforeClose").smartbox('open');
+        });
+    })
+</script>
+    </div>
+    <!--关闭之前事件 End-->
+    <!--关闭样式 Start-->
+    <div class="section">
+        <h2>
+            <a id="anchor_closeStyle">关闭样式</a>
+        </h2>
+        <p>
+            关闭图标目前支持在弹层内容和弹层外部两种
+        </p>
+        <ul class="tabs">
+            <li class="active"><a href="javascript:;" class="tab-output">关闭样式</a></li>
+            <li><a href="javascript:;" class="tab-html">HTML</a></li>
+            <li><a href="javascript:;" class="tab-js">JavaScript</a></li>
+        </ul>
+        <div class="tabContainer">
+            <div class="operation">
+                <div id="closeStyle" style="display: none;"></div>
+                <a id="closeStyle_open" href="javascript:void(0);">open box</a>
+            </div>
+            <pre class="prettyprint" style="display:none;">
+&lt;div id=&quot;closeStyle&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;a id=&quot;closeStyle_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
+</pre>
+        </div>
+<script type="text/javascript">
+    $(function(){
+        $("#closeStyle").smartbox({
+            title:'标题',
+            isShowFooter:false,
+            width:500,
+            height:300,
+            content:'<p class="introduce_msg">smartbox.js 是一款基于jquery 的<span style="color: red;">开源的</span>弹出层插件，它小巧但功能强大，允许用户在一个界面同时弹出多个对话框。弹出的内容支持多种形式，样式简洁多样。想要了解更多可以查看<a target="_blank" href="http://smartbox.huangsw.com/cn/introduce.html">官方文档</a>。 查看源码以及demo可以访问<a href="https://github.com/huangshuwei/jquery.smartbox" target="_blank">我的github</a>。</p>',
+            closeType:'in', // 'in':关闭图标在弹层内部右上角； 'out':关闭图标在弹层外部右上角 |type:string
+            isAutoShow:false
+        });
+
+        $("#closeStyle_open").click(function () {
+            $("#closeStyle").smartbox('open');
+        });
+    })
+</script>
+    </div>
+    <!--关闭样式 End-->
+
+    <!--结束了-->
+    <div class="section">
+        这里只是展示了
+        <span style="color: red;">部分的功能</span>
+        ，更多功能请看<a href="api.html">api文档</a>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+    </div>
 </div>
 </body>
 </html>
 <script src="../dist/js/libs_examples.min.js" type="text/javascript"></script>
-<!--<script src="../public/js/prettify.min.js" type="text/javascript"></script>
+<!--
+&lt;!&ndash;<script src="../public/js/prettify.min.js" type="text/javascript"></script>
 <script src="../public/js/jquery.smartbox.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="../dist/js/examples.min.js"></script>-->
+<script type="text/javascript" src="../dist/js/examples.min.js"></script>&ndash;&gt;-->
 
