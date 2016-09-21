@@ -28,7 +28,7 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
-    background: url('/smartbox/public/imgs/smartbox/close20x20.png') no-repeat;
+    background: url('/official-site-for-smartbox/public/imgs/smartbox/close20x20.png') no-repeat;
 }
 
 .smartBox_header_close_circle {
@@ -40,7 +40,7 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: url('/smartbox/public/imgs/smartbox/close_circle_white32x32.png') no-repeat;
+    background: url('/official-site-for-smartbox/public/imgs/smartbox/close_circle_white32x32.png') no-repeat;
     z-index: 888;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .smartBoxLoadingImg {
-    background: url('/smartbox/public/imgs/smartbox/loading38x38.gif') no-repeat center;
+    background: url('/official-site-for-smartbox/public/imgs/smartbox/loading38x38.gif') no-repeat center;
 }
 
 .smartBoxLoadingText{
