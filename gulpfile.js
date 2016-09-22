@@ -95,4 +95,4 @@ gulp.task('css_public',['compresscss2']);
 gulp.task('js_public',['compressjs2']);
 
 
-gulp.task('default', ['clean','compresscss1','concat-compressjs','concat-examples','concat-api']);
+gulp.task('default', ['compresscss1','concat-compressjs','concat-examples','concat-api']);
