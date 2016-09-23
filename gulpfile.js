@@ -54,8 +54,8 @@ gulp.task('compresscss2', function () {
 });
 
 
-/*合并js并压缩*/
-gulp.task('concat-compressjs', function () {
+/*合并example js并压缩*/
+gulp.task('concat-compress-examplesjs', function () {
     gulp.src(['src/js/examples.js','public/js/jquery.smartbox.js','public/js/prettify.js'])
         .pipe(concat('libs_examples.js'))
         .pipe(uglify())
@@ -64,9 +64,19 @@ gulp.task('concat-compressjs', function () {
         .pipe(gulp.dest('dist/js'))
 });
 
+/*合并api js并压缩*/
+gulp.task('concat-compress-apijs', function () {
+    gulp.src(['src/js/api.js','public/js/prettify.js'])
+        .pipe(concat('libs_api.js'))
+        .pipe(uglify())
+        //给压缩后的文件，添加min后缀名
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest('dist/js'))
+});
+
 /*合并css并压缩-examples*/
-gulp.task('concat-examples', function () {
-    gulp.src(['src/css/main.css','src/css/examples.css','public/css/prettify/prettify.css','public/css/smartbox/jquery.smartbox.css'])
+gulp.task('concat-examplesCss', function () {
+    gulp.src(['src/css/main.css','src/css/examples.css','public/css/prettify.css','public/css/jquery.smartbox.css'])
         .pipe(concat('libs_examples.css'))
         .pipe(uglifyCss())
         //给压缩后的文件，添加min后缀名
@@ -76,7 +86,7 @@ gulp.task('concat-examples', function () {
 
 /*合并css并压缩-api*/
 gulp.task('concat-api', function () {
-    gulp.src(['src/css/main.css','src/css/api.css'])
+    gulp.src(['src/css/main.css','src/css/api.css','public/css/prettify.css'])
         .pipe(concat('libs_api.css'))
         .pipe(uglifyCss())
         //给压缩后的文件，添加min后缀名
@@ -90,9 +100,16 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 
+
+gulp.task('moveImgs', function () {
+    return gulp.src('public/imgs/*', {base: './public/imgs/' })
+        .pipe(gulp.dest('dist/imgs'));
+});
+
+
 gulp.task('css_public',['compresscss2']);
 
 gulp.task('js_public',['compressjs2']);
 
 
-gulp.task('default', ['compresscss1','concat-compressjs','concat-examples','concat-api']);
+gulp.task('default', ['moveImgs','compresscss1','concat-compress-examplesjs','concat-compress-apijs','concat-examplesCss','concat-api']);
