@@ -83,7 +83,7 @@ $(function(){
         <div class="tabContainer">
             <div class="operation">
                 <div id="contentByHtmlElement" style="display:none;">
-                    <div class="smartBox_header">
+                    <div class="smartBox_title">
                         标题
                     </div>
                     <div class="smartBox_body">
@@ -196,11 +196,11 @@ $(function(){
         <div class="tabContainer">
             <div class="operation">
                 <div id="ajaxRequestImage" style="display: none;"></div>
-                <a id="ajaxRequestImage_close" href="javascript:void(0);">open box</a>
+                <a id="ajaxRequestImage_open" href="javascript:void(0);">open box</a>
             </div>
             <pre class="prettyprint" style="display:none;">
 &lt;div id=&quot;ajaxRequestImage&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
-&lt;a id=&quot;ajaxRequestImage_close&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
+&lt;a id=&quot;ajaxRequestImage_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
 </pre>
         </div>
 <script type="text/javascript">
@@ -218,20 +218,61 @@ $(function(){
             title:'异步获取图片',
             width:495,
             height:610,
-            headerHeight:0,
             closeType:'out',
             isAutoShow:false,
             isShowTitle:false,
             isShowFooter:false
         });
 
-        $("#ajaxRequestImage_close").click(function () {
+        $("#ajaxRequestImage_open").click(function () {
             $("#ajaxRequestImage").smartbox('open');
         });
     })
 </script>
     </div>
     <!--异步请求image End-->
+    <!--开启拖动 Start-->
+    <div class="section">
+        <h2>
+            <a id="anchor_drag">开启拖动</a>
+        </h2>
+        <p>
+            smartbox 允许开启拖动
+        </p>
+        <ul class="tabs">
+            <li class="active"><a href="javascript:;" class="tab-output">开启拖动</a></li>
+            <li><a href="javascript:;" class="tab-html">HTML</a></li>
+            <li><a href="javascript:;" class="tab-js">JavaScript</a></li>
+        </ul>
+        <div class="tabContainer">
+            <div class="operation">
+                <div id="drag" style="display: none;"></div>
+                <a id="drag_open" href="javascript:void(0);">open box</a>
+            </div>
+            <pre class="prettyprint" style="display:none;">
+&lt;div id=&quot;drag&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;a id=&quot;drag_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
+</pre>
+        </div>
+<script type="text/javascript">
+    $(function(){
+        $("#drag").smartbox({
+            title:'拖动',
+            isShowFooter:false,
+            width:500,
+            height:300,
+            content:'<p class="introduce_msg">smartbox.js 是一款基于jquery 的<span style="color: red;">开源的</span>弹出层插件，它小巧但功能强大，允许用户在一个界面同时弹出多个对话框。弹出的内容支持多种形式，样式简洁多样。想要了解更多可以查看<a target="_blank" href="http://smartbox.huangsw.com/cn/introduce.html">官方文档</a>。 查看源码以及demo可以访问<a href="https://github.com/huangshuwei/jquery.smartbox" target="_blank">我的github</a>。</p>',
+            isAutoShow:false,
+            isDrag:true
+        });
+
+        $("#drag_open").click(function () {
+            $("#drag").smartbox('open');
+        });
+    })
+</script>
+    </div>
+    <!--开启拖动 End-->
     <!--打开和关闭 Start-->
     <div class="section">
         <h2>
@@ -436,9 +477,8 @@ $(function(){
 </div>
 </body>
 </html>
-<script src="../dist/js/libs_examples.min.js" type="text/javascript"></script>
-<!--
-&lt;!&ndash;<script src="../public/js/prettify.min.js" type="text/javascript"></script>
-<script src="../public/js/jquery.smartbox.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="../dist/js/examples.min.js"></script>&ndash;&gt;-->
+<!--<script src="../dist/js/libs_examples.min.js" type="text/javascript"></script>-->
+<script src="../public/js/prettify.min.js" type="text/javascript"></script>
+<script src="../public/js/jquery.smartbox.js?v=1" type="text/javascript"></script>
+<script type="text/javascript" src="../src/js/examples.js"></script>
 

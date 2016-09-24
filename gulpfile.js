@@ -46,7 +46,7 @@ gulp.task('compresscss1', function () {
  * 压缩公共css
  * */
 gulp.task('compresscss2', function () {
-    gulp.src('public/css/*/*.css')
+    gulp.src('public/css/*.css')
         .pipe(uglifyCss())
         //给压缩后的文件，添加min后缀名
         .pipe(rename({suffix: '.min'}))
