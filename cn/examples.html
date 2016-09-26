@@ -32,7 +32,7 @@
             <a id="anchor_basic">基本设置</a>
         </h2>
         <p>
-            smartbox 基本的设置，默认弹出层内容来自配置项。
+            此插件基本的设置，默认弹出层内容来自配置项，即在传入参数设置属性‘title’、‘content’的值。
         </p>
         <ul class="tabs">
             <li class="active"><a href="javascript:;" class="tab-output">基本设置</a></li>
@@ -73,7 +73,7 @@ $(function(){
             <a id="anchor_contentByHtmlElement">内容来自html标签</a>
         </h2>
         <p>
-            弹出层的内容来自html标签。title、content、footer 内容都可以通过html获取。
+            此插件弹出层的内容，也可以来自html标签。title、content、footer 内容都可以通过html获取。
         </p>
         <ul class="tabs">
             <li class="active"><a href="javascript:;" class="tab-output">内容来自html标签</a></li>
@@ -136,7 +136,8 @@ $(function(){
             <a id="anchor_ajaxRequestHtml">异步请求html</a>
         </h2>
         <p>
-            smartbox 支持异步获取html内容，这样就允许弹出内容单独作为一个页面。
+            此插件支持异步获取html内容，这样就允许弹出内容单独作为一个页面。<br />
+            前提要求设置属性‘type:option’,这样异步请求的参数就会生效。
         </p>
         <ul class="tabs">
             <li class="active"><a href="javascript:;" class="tab-output">异步请求html</a></li>
@@ -186,7 +187,7 @@ $(function(){
             <a id="anchor_ajaxRequestImage">异步请求image</a>
         </h2>
         <p>
-            smartbox 支持异步获取图片
+            此插件支持异步获取图片，参数设置和‘异步请求html’类似。
         </p>
         <ul class="tabs">
             <li class="active"><a href="javascript:;" class="tab-output">异步请求image</a></li>
@@ -231,55 +232,56 @@ $(function(){
 </script>
     </div>
     <!--异步请求image End-->
-    <!--开启拖动 Start-->
+    <!--拖动类型设置 Start-->
     <div class="section">
         <h2>
-            <a id="anchor_drag">开启拖动</a>
+            <a id="anchor_dragType">拖动类型设置</a>
         </h2>
         <p>
-            smartbox 允许开启拖动
+            拖动的类型可以通过‘dragType’ 属性设置，'relpace':拖拽一个替代的弹窗；'self':拖拽自身。
         </p>
         <ul class="tabs">
-            <li class="active"><a href="javascript:;" class="tab-output">开启拖动</a></li>
+            <li class="active"><a href="javascript:;" class="tab-output">拖动类型设置</a></li>
             <li><a href="javascript:;" class="tab-html">HTML</a></li>
             <li><a href="javascript:;" class="tab-js">JavaScript</a></li>
         </ul>
         <div class="tabContainer">
             <div class="operation">
-                <div id="drag" style="display: none;"></div>
-                <a id="drag_open" href="javascript:void(0);">open box</a>
+                <div id="dragType" style="display: none;"></div>
+                <a id="dragType_open" href="javascript:void(0);">open box</a>
             </div>
             <pre class="prettyprint" style="display:none;">
-&lt;div id=&quot;drag&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
-&lt;a id=&quot;drag_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
+&lt;div id=&quot;dragType&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;a id=&quot;dragType_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
 </pre>
         </div>
 <script type="text/javascript">
     $(function(){
-        $("#drag").smartbox({
-            title:'拖动',
+        $("#dragType").smartbox({
+            title:'拖动类型设置',
             isShowFooter:false,
             width:500,
             height:300,
             content:'<p class="introduce_msg">smartbox.js 是一款基于jquery 的<span style="color: red;">开源的</span>弹出层插件，它小巧但功能强大，允许用户在一个界面同时弹出多个对话框。弹出的内容支持多种形式，样式简洁多样。想要了解更多可以查看<a target="_blank" href="http://smartbox.huangsw.com/cn/introduce.html">官方文档</a>。 查看源码以及demo可以访问<a href="https://github.com/huangshuwei/jquery.smartbox" target="_blank">我的github</a>。</p>',
             isAutoShow:false,
-            isDrag:true
+            isCloseOnOverlayClick:false,
+            dragType:'self' // 'relpace':拖拽一个替代的弹窗；'self':拖拽自身
         });
 
-        $("#drag_open").click(function () {
-            $("#drag").smartbox('open');
+        $("#dragType_open").click(function () {
+            $("#dragType").smartbox('open');
         });
     })
 </script>
     </div>
-    <!--开启拖动 End-->
+    <!--拖动类型设置 End-->
     <!--打开和关闭 Start-->
     <div class="section">
         <h2>
             <a id="anchor_openAndClose">打开和关闭</a>
         </h2>
         <p>
-            提供打开和关闭的操作
+            此插件提供打开和关闭的操作，可以根据自己的业务场景对弹窗进行操作。
         </p>
         <ul class="tabs">
             <li class="active"><a href="javascript:;" class="tab-output">打开和关闭</a></li>
@@ -321,71 +323,135 @@ $(function(){
 </script>
     </div>
     <!--打开和关闭 End-->
-    <!--支持多个弹层 Start-->
+    <!--多窗口模式（同级） Start-->
     <div class="section">
         <h2>
-            <a id="anchor_multipleBox">支持多个弹层</a>
+            <a id="anchor_multipleBox_sameLevel">多窗口模式（同级）</a>
         </h2>
         <p>
-            提供打开和关闭的操作
+            支持多窗口，条件是不设置属性‘zIndex’，或者多个弹窗‘zIndex’属性设置成相同。<br />这是你能看到当两个窗口重叠时，点击在下面的一个，
+            可以让交换上下的位置。
         </p>
         <ul class="tabs">
-            <li class="active"><a href="javascript:;" class="tab-output">支持多个弹层</a></li>
+            <li class="active"><a href="javascript:;" class="tab-output">多窗口模式（同级）</a></li>
             <li><a href="javascript:;" class="tab-html">HTML</a></li>
             <li><a href="javascript:;" class="tab-js">JavaScript</a></li>
         </ul>
         <div class="tabContainer">
             <div class="operation">
-                <div id="multipleBox1" style="display: none;"></div>
-                <div id="multipleBox2" style="display: none;"></div>
-                <a id="multipleBox1_open" href="javascript:void(0);">open box1</a>
+                <div id="multipleBox_sameLevel1" style="display: none;"></div>
+                <div id="multipleBox_sameLevel2" style="display: none;"></div>
+                <a id="multipleBox_sameLevel1_open" href="javascript:void(0);">open box1</a>
             </div>
             <pre class="prettyprint" style="display:none;">
-&lt;div id=&quot;multipleBox1&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;multipleBox2&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
-&lt;a id=&quot;multipleBox1_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box1&lt;/a&gt;
+&lt;div id=&quot;multipleBox_sameLevel1&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;multipleBox_sameLevel2&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;a id=&quot;multipleBox_sameLevel1_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box1&lt;/a&gt;
 </pre>
         </div>
 <script type="text/javascript">
     $(function () {
-        $("#multipleBox1").smartbox({
+        $("#multipleBox_sameLevel1").smartbox({
             title: '这是box1',
-            width: 700,
-            height: 500,
-            content:'<p class="introduce_msg"><a id="multipleBox2_open" href="javascript:void(0);">open box2</a></p>',
+            width: 400,
+            height: 300,
+            content:'<p class="introduce_msg"><a id="multipleBox_sameLevel2_open" href="javascript:void(0);">open box2</a></p>',
             isAutoShow:false,
             isShowFooter:false,
-            zIndex:9998
+            isShowOverlay:false
         });
 
-        $("#multipleBox2").smartbox({
+        $("#multipleBox_sameLevel2").smartbox({
+            title: '这是box2',
+            width: 500,
+            height: 200,
+            content: '<p class="introduce_msg">smartbox 支持多个弹层</p>',
+            footer:'box2',
+            isAutoShow:false,
+            isShowOverlay:false
+        });
+
+        $("#multipleBox_sameLevel1_open").click(function () {
+            $("#multipleBox_sameLevel1").smartbox('open');
+        });
+
+        $("#multipleBox_sameLevel2_open").click(function () {
+            $("#multipleBox_sameLevel2").smartbox('open');
+        });
+    })
+</script>
+    </div>
+    <!--多窗口模式（同级） End-->
+    <!--多窗口模式（不同级） Start-->
+    <div class="section">
+        <h2>
+            <a id="anchor_multipleBox_differLevel">多窗口模式（不同级）</a>
+        </h2>
+        <p>
+            此插件不仅支持多窗口同级模式，并且支持不同级的形式。要求条件是设置‘zIndex’,‘zIndex’值大的在上方，
+            <br />并且要求设置遮罩层即‘isShowOverlay:true’，因为不同级模式不适用遮罩层就没有意义了。
+        </p>
+        <ul class="tabs">
+            <li class="active"><a href="javascript:;" class="tab-output">多窗口模式（不同级）</a></li>
+            <li><a href="javascript:;" class="tab-html">HTML</a></li>
+            <li><a href="javascript:;" class="tab-js">JavaScript</a></li>
+        </ul>
+        <div class="tabContainer">
+            <div class="operation">
+                <div id="multipleBox_differLevel1" style="display: none;"></div>
+                <div id="multipleBox_differLevel2" style="display: none;"></div>
+                <a id="multipleBox_differLevel1_open" href="javascript:void(0);">open box1</a>
+            </div>
+            <pre class="prettyprint" style="display:none;">
+&lt;div id=&quot;multipleBox_differLevel1&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;multipleBox_differLevel2&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;a id=&quot;multipleBox_differLevel1_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box1&lt;/a&gt;
+</pre>
+        </div>
+<script type="text/javascript">
+    $(function () {
+        $("#multipleBox_differLevel1").smartbox({
+            title: '这是box1',
+            width: 600,
+            height: 500,
+            content:'<p class="introduce_msg"><a id="multipleBox_differLevel2_open" href="javascript:void(0);">open box2</a></p>',
+            isAutoShow:false,
+            isShowFooter:false,
+            isShowOverlay:true,
+            isCloseOnOverlayClick:false,
+            zIndex:998
+        });
+
+        $("#multipleBox_differLevel2").smartbox({
             title: '这是box2',
             width: 300,
             height: 200,
             content: '<p class="introduce_msg">smartbox 支持多个弹层</p>',
             footer:'box2',
             isAutoShow:false,
-            zIndex:9999
+            isShowOverlay:true,
+            isCloseOnOverlayClick:false,
+            zIndex:999
         });
 
-        $("#multipleBox1_open").click(function () {
-            $("#multipleBox1").smartbox('open');
+        $("#multipleBox_differLevel1_open").click(function () {
+            $("#multipleBox_differLevel1").smartbox('open');
         });
 
-        $("#multipleBox2_open").click(function () {
-            $("#multipleBox2").smartbox('open');
+        $("#multipleBox_differLevel2_open").click(function () {
+            $("#multipleBox_differLevel2").smartbox('open');
         });
     })
 </script>
     </div>
-    <!--支持多个弹层 End-->
+    <!--多窗口模式（不同级） End-->
     <!--关闭之前事件 Start-->
     <div class="section">
         <h2>
             <a id="anchor_event-beforeClose">关闭之前事件</a>
         </h2>
         <p>
-            支持关闭弹层之前调用方法。
+            此插件支持关闭弹层之前调用方法，比如关闭之前询问用户是否要关闭等。
         </p>
         <ul class="tabs">
             <li class="active"><a href="javascript:;" class="tab-output">关闭之前事件</a></li>
@@ -430,7 +496,7 @@ $(function(){
             <a id="anchor_closeStyle">关闭样式</a>
         </h2>
         <p>
-            关闭图标目前支持在弹层内容和弹层外部两种
+            关闭图标目前支持在弹层内容和弹层外部两种，根据自己的需求设定。
         </p>
         <ul class="tabs">
             <li class="active"><a href="javascript:;" class="tab-output">关闭样式</a></li>
