@@ -25,6 +25,19 @@
     </div>
 
     <!--content-->
+    <div class="section">
+        <h2>
+            <a id="anchor_beforeUse">使用说明</a>
+        </h2>
+        <p>
+            在使用这个插件之前你需要引用几个文件。<br />
+            1:jquery 1.5.1+<br />
+            2:jquery.smartbox.js<br />
+            3: jquery.smartbox.css<br />
+
+            满足条件后就可以使用啦...
+        </p>
+    </div>
     <!--基本设置 start-->
     <script src="../dist/js/jquery.min.js" type="text/javascript"></script>
     <div class="section">
@@ -32,7 +45,7 @@
             <a id="anchor_basic">基本设置</a>
         </h2>
         <p>
-            此插件基本的设置，默认弹出层内容来自配置项，即在传入参数设置属性‘title’、‘content’的值。
+            此插件基本的设置，默认弹出层内容来自配置项。
         </p>
         <ul class="tabs">
             <li class="active"><a href="javascript:;" class="tab-output">基本设置</a></li>
@@ -117,7 +130,7 @@ $(function(){
 <script type="text/javascript">
     $(function(){
         $("#contentByHtmlElement").smartbox({
-            type: 'html',
+            type: 'inline',// 'inline':title、content、footer 内容来自html标签；'option':title、content、footer 内容来自配置 |type string
             width: 500,
             height: 300,
             isAutoShow:false
@@ -136,8 +149,7 @@ $(function(){
             <a id="anchor_ajaxRequestHtml">异步请求html</a>
         </h2>
         <p>
-            此插件支持异步获取html内容，这样就允许弹出内容单独作为一个页面。<br />
-            前提要求设置属性‘type:option’,这样异步请求的参数就会生效。
+            此插件支持异步获取html内容。<br />
         </p>
         <ul class="tabs">
             <li class="active"><a href="javascript:;" class="tab-output">异步请求html</a></li>
@@ -159,17 +171,16 @@ $(function(){
         $("#ajaxRequestHtml").smartbox({
             type:'option',// 'html':title、content、footer 内容来自html；'option':title、content、footer 内容来自配置 |type string
             ajaxSetting:{
-                contentType:'html', // 'html':异步加载的内容为html;'img':异步加载的内容为图片 |type:string
+                contentType:'html', // 'html':异步加载html；'img':异步加载图片；'iframe':异步加载iframe（可以解决跨域问题） |type:string
                 url : 'http://smartbox.huangsw.com/demo/html/introduce.html',
-                type : 'GET',
                 isShowLoading : true,// 是否显示加载效果 |type:bool
                 loadingType:'text',// 'img':加载中以图片的效果展示；'text':加载中以文字的形式展示 |type:string
                 loadingText:'<span style="color: #6f6f6f;">页面加载中...</span>',
                 errorContent:'<span style="color:red;">请关闭弹窗重新再试！</span>' // 请求错误时显示的内容 |type:html
             },
-            title:'smartbox 简介',
+            title:'smartbox 简介-通过ajax',
             width:500,
-            height:300,
+            height:330,
             isAutoShow:false,
             isShowFooter:false
         });
@@ -184,10 +195,10 @@ $(function(){
     <!--异步请求image Start-->
     <div class="section">
         <h2>
-            <a id="anchor_ajaxRequestImage">异步请求image</a>
+            <a id="anchor_asyncRequestImage">异步请求image</a>
         </h2>
         <p>
-            此插件支持异步获取图片，参数设置和‘异步请求html’类似。
+            此插件支持异步获取图片。
         </p>
         <ul class="tabs">
             <li class="active"><a href="javascript:;" class="tab-output">异步请求image</a></li>
@@ -196,22 +207,21 @@ $(function(){
         </ul>
         <div class="tabContainer">
             <div class="operation">
-                <div id="ajaxRequestImage" style="display: none;"></div>
-                <a id="ajaxRequestImage_open" href="javascript:void(0);">open box</a>
+                <div id="asyncRequestImage" style="display: none;"></div>
+                <a id="asyncRequestImage_close" href="javascript:void(0);">open box</a>
             </div>
             <pre class="prettyprint" style="display:none;">
-&lt;div id=&quot;ajaxRequestImage&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
-&lt;a id=&quot;ajaxRequestImage_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
+&lt;div id=&quot;asyncRequestImage&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;a id=&quot;asyncRequestImage_close&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
 </pre>
         </div>
 <script type="text/javascript">
     $(function(){
-        $("#ajaxRequestImage").smartbox({
+        $("#asyncRequestImage").smartbox({
             type:'option',// 'html':title、content、footer 内容来自html；'option':title、content、footer 内容来自配置 |type string
             ajaxSetting:{
+                contentType:'img',// 'html':异步加载html；'img':异步加载图片；'iframe':异步加载iframe（可以解决跨域问题） |type:string
                 url : 'http://smartbox.huangsw.com/demo/imgs/Vincent_big.jpg',
-                contentType:'img',// 'html':异步加载的内容为html;'img':异步加载的内容为图片 |type:string
-                type : 'GET',
                 isShowLoading : true,// 是否显示加载效果 |type:bool
                 loadingType:'img',// 'img':加载中以图片的效果展示；'text':加载中以文字的形式展示 |type:string
                 errorContent:'<span style="color:red;">请关闭弹窗重新再试！</span>'
@@ -225,13 +235,62 @@ $(function(){
             isShowFooter:false
         });
 
-        $("#ajaxRequestImage_open").click(function () {
-            $("#ajaxRequestImage").smartbox('open');
+        $("#asyncRequestImage_close").click(function () {
+            $("#asyncRequestImage").smartbox('open');
         });
     })
 </script>
     </div>
     <!--异步请求image End-->
+    <!--通过iframe 跨域异步请求 Start-->
+    <div class="section">
+        <h2>
+            <a id="anchor_asyncRequest_ByIframe">通过iframe 跨域异步请求</a>
+        </h2>
+        <p>
+            此插件支持通过iframe 跨域异步请求。
+        </p>
+        <ul class="tabs">
+            <li class="active"><a href="javascript:;" class="tab-output">通过iframe异步请求</a></li>
+            <li><a href="javascript:;" class="tab-html">HTML</a></li>
+            <li><a href="javascript:;" class="tab-js">JavaScript</a></li>
+        </ul>
+        <div class="tabContainer">
+            <div class="operation">
+                <div id="asyncRequest_ByIframe" style="display: none;"></div>
+                <a id="asyncRequest_ByIframe_close" href="javascript:void(0);">open box</a>
+            </div>
+            <pre class="prettyprint" style="display:none;">
+&lt;div id=&quot;asyncRequest_ByIframe&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;a id=&quot;asyncRequest_ByIframe_close&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
+</pre>
+        </div>
+    <script type="text/javascript">
+        $(function(){
+            $("#asyncRequest_ByIframe").smartbox({
+                type:'option',// 'html':title、content、footer 内容来自html；'option':title、content、footer 内容来自配置 |type string
+                ajaxSetting:{
+                    contentType:'iframe', // 'html':异步加载html；'img':异步加载图片；'iframe':异步加载iframe（可以解决跨域问题） |type:string
+                    url : 'http://smartbox.huangsw.com/demo/html/introduce.html',
+                    isShowLoading : true,// 是否显示加载效果 |type:bool
+                    loadingType:'text',// 'img':加载中以图片的效果展示；'text':加载中以文字的形式展示 |type:string
+                    loadingText:'<span style="color: #6f6f6f;">页面加载中...</span>',
+                    errorContent:'<span style="color:red;">请关闭弹窗重新再试！</span>' // 请求错误时显示的内容 |type:html
+                },
+                title:'smartbox 简介-<span>通过iframe</span>',
+                width:500,
+                height:330,
+                isAutoShow:false,
+                isShowFooter:false
+            });
+
+            $("#asyncRequest_ByIframe_close").click(function () {
+                $("#asyncRequest_ByIframe").smartbox('open');
+            });
+        })
+    </script>
+    </div>
+    <!--通过iframe 跨域异步请求 End-->
     <!--拖动类型设置 Start-->
     <div class="section">
         <h2>
