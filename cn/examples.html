@@ -172,7 +172,7 @@ $(function(){
             type:'option',// 'html':title、content、footer 内容来自html；'option':title、content、footer 内容来自配置 |type string
             ajaxSetting:{
                 contentType:'html', // 'html':异步加载html；'img':异步加载图片；'iframe':异步加载iframe（可以解决跨域问题） |type:string
-                url : 'http://smartbox.huangsw.com/demo/html/introduce.html',
+                url : '../demo/html/introduce.html',
                 isShowLoading : true,// 是否显示加载效果 |type:bool
                 loadingType:'text',// 'img':加载中以图片的效果展示；'text':加载中以文字的形式展示 |type:string
                 loadingText:'<span style="color: #6f6f6f;">页面加载中...</span>',
@@ -504,51 +504,78 @@ $(function(){
 </script>
     </div>
     <!--多窗口模式（不同级） End-->
-    <!--关闭之前事件 Start-->
+    <!--回调事件 Start-->
     <div class="section">
         <h2>
-            <a id="anchor_event-beforeClose">关闭之前事件</a>
+            <a id="anchor_callbackEvents">回调事件</a>
         </h2>
         <p>
-            此插件支持关闭弹层之前调用方法，比如关闭之前询问用户是否要关闭等。
+            此插件支持多种回调事件，允许在各个阶段处理自己的业务逻辑。
         </p>
         <ul class="tabs">
-            <li class="active"><a href="javascript:;" class="tab-output">关闭之前事件</a></li>
+            <li class="active"><a href="javascript:;" class="tab-output">回调事件</a></li>
             <li><a href="javascript:;" class="tab-html">HTML</a></li>
             <li><a href="javascript:;" class="tab-js">JavaScript</a></li>
         </ul>
         <div class="tabContainer">
             <div class="operation">
-                <div id="event-beforeClose" style="display: none;"></div>
-                <a id="event-beforeClose_open" href="javascript:void(0);">open box</a>
+                <div id="callbackEvents" style="display: none;"></div>
+                <a id="callbackEvents_open" href="javascript:void(0);">open box</a>
             </div>
             <pre class="prettyprint" style="display:none;">
-&lt;div id=&quot;event-beforeClose&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
-&lt;a id=&quot;event-beforeClose_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
+&lt;div id=&quot;callbackEvents&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;a id=&quot;callbackEvents_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
 </pre>
         </div>
 <script type="text/javascript">
-    $(function(){
-        $("#event-beforeClose").smartbox({
-            title:'标题',
-            isShowFooter:false,
-            width:500,
-            height:300,
-            content:'<p class="introduce_msg">smartbox.js 是一款基于jquery 的<span style="color: red;">开源的</span>弹出层插件，它小巧但功能强大，允许用户在一个界面同时弹出多个对话框。弹出的内容支持多种形式，样式简洁多样。想要了解更多可以查看<a target="_blank" href="http://smartbox.huangsw.com/cn/introduce.html">官方文档</a>。 查看源码以及demo可以访问<a href="https://github.com/huangshuwei/jquery.smartbox" target="_blank">我的github</a>。</p>',
-            beforeClose:function () { // 关闭前调用的事件,返回true 则会触发关闭 |type:function
-                // 此处替换成你要处理的业务逻辑
+    $(function () {
+        $("#callbackEvents").smartbox({
+            type: 'option',// 'html':title、content、footer 内容来自html；'option':title、content、footer 内容来自配置 |type string
+            ajaxSetting: {
+                contentType: 'img',// 'html':异步加载html；'img':异步加载图片；'iframe':异步加载iframe（可以解决跨域问题） |type:string
+                url: 'http://smartbox.huangsw.com/demo/imgs/Vincent_big.jpg',
+                isShowLoading: true,// 是否显示加载效果 |type:bool
+                loadingType: 'img',// 'img':加载中以图片的效果展示；'text':加载中以文字的形式展示 |type:string
+                errorContent: '<span style="color:red;">请关闭弹窗重新再试！</span>'
+            },
+            title: '异步获取图片',
+            width: 495,
+            height: 610,
+            closeType: 'out',
+            isAutoShow: false,
+            isShowTitle: false,
+            isShowFooter: false,
+
+            beforeShow: function () {
+                return confirm('确定要打开？')
+            },
+            afterShow: function () {
+                alert('afterShow');
+            },
+
+            beforeRequest:function () {
+                alert('beforeRequest');
+            },
+
+            afterRequest:function () {
+                alert('afterRequest');
+            },
+
+            beforeClose: function () {
                 return confirm('确定要关闭？')
             },
-            isAutoShow:false
+            afterClose: function () {
+                alert('afterClose');
+            }
         });
 
-        $("#event-beforeClose_open").click(function () {
-            $("#event-beforeClose").smartbox('open');
+        $("#callbackEvents_open").click(function () {
+            $("#callbackEvents").smartbox('open');
         });
     })
 </script>
     </div>
-    <!--关闭之前事件 End-->
+    <!--回调事件 End-->
     <!--关闭样式 Start-->
     <div class="section">
         <h2>
