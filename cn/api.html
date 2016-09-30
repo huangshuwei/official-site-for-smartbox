@@ -81,6 +81,21 @@
                     <td>string</td>
                 </tr>
                 <tr>
+                    <td>borderColor</td>
+                    <td>弹窗的 border 颜色。默认 '#adabab'</td>
+                    <td>string</td>
+                </tr>
+                <tr>
+                    <td>borderRadius</td>
+                    <td>弹窗 border 圆角。默认 0</td>
+                    <td>int</td>
+                </tr>
+                <tr>
+                    <td>borderWidth</td>
+                    <td>弹窗 border-width。默认 1</td>
+                    <td>int</td>
+                </tr>
+                <tr>
                     <td>isShowTitle</td>
                     <td>是否显示title。默认true</td>
                     <td>bool</td>
@@ -208,8 +223,38 @@
             </thead>
             <tbody>
             <tr>
+                <td>beforeShow</td>
+                <td> 弹窗显示之前的事件，返回 false 将不会打开弹层。具体实例请参考<a target="_blank" href="examples.html#anchor_callbackEvents">回调事件</a>
+                </td>
+                <td>function</td>
+            </tr>
+            <tr>
+                <td>afterShow</td>
+                <td> 弹窗显示之后的事件。具体实例请参考<a target="_blank" href="examples.html#anchor_callbackEvents">回调事件</a>
+                </td>
+                <td>function</td>
+            </tr>
+            <tr>
+                <td>beforeRequest</td>
+                <td> 数据请求前的事件。具体实例请参考<a target="_blank" href="examples.html#anchor_callbackEvents">回调事件</a>
+                </td>
+                <td>function</td>
+            </tr>
+            <tr>
+                <td>afterRequest</td>
+                <td> 数据请求结束的事件。具体实例请参考<a target="_blank" href="examples.html#anchor_callbackEvents">回调事件</a>
+                </td>
+                <td>function</td>
+            </tr>
+            <tr>
                 <td>beforeClose</td>
-                <td> 关闭前调用的方法。具体实例请参考<a target="_blank" href="examples.html#anchor_callbackEvents">关闭之前事件</a>
+                <td> 关闭前调用的方法。具体实例请参考<a target="_blank" href="examples.html#anchor_callbackEvents">回调事件</a>
+                </td>
+                <td>function</td>
+            </tr>
+            <tr>
+                <td>afterClose</td>
+                <td> 关闭后调用的事件。具体实例请参考<a target="_blank" href="examples.html#anchor_callbackEvents">回调事件</a>
                 </td>
                 <td>function</td>
             </tr>

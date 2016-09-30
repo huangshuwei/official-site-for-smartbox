@@ -619,51 +619,54 @@ $(function(){
     </div>
     <!--关闭样式 End-->
 
-    <!--设置头部底部背景色 Start-->
+    <!--其他设置 Start-->
     <div class="section">
         <h2>
-            <a id="anchor_setBgColor">设置头部底部背景色</a>
+            <a id="anchor_setBgColor">其他设置</a>
         </h2>
         <p>
-            插件支持自定义title、footer背景色。
+            插件支持自定义title、footer背景色、border 的颜色、宽度、圆角等。
         </p>
         <ul class="tabs">
-            <li class="active"><a href="javascript:;" class="tab-output">设置头部底部背景色</a></li>
+            <li class="active"><a href="javascript:;" class="tab-output">其他设置</a></li>
             <li><a href="javascript:;" class="tab-html">HTML</a></li>
             <li><a href="javascript:;" class="tab-js">JavaScript</a></li>
         </ul>
         <div class="tabContainer">
             <div class="operation">
-                <div id="setBgColor" style="display: none;"></div>
-                <a id="setBgColor_open" href="javascript:void(0);">open box</a>
+                <div id="otherSetting" style="display: none;"></div>
+                <a id="otherSetting_open" href="javascript:void(0);">open box</a>
             </div>
             <pre class="prettyprint" style="display:none;">
-&lt;div id=&quot;setBgColor&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
-&lt;a id=&quot;setBgColor_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
+&lt;div id=&quot;otherSetting&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;a id=&quot;otherSetting_open&quot; href=&quot;javascript:void(0);&quot;&gt;open box&lt;/a&gt;
 </pre>
         </div>
 <script type="text/javascript">
     $(function(){
-        $("#setBgColor").smartbox({
+        $("#otherSetting").smartbox({
             title:'标题',
             footer:'底部',
             titleBgColor:'#78baf3',
             footerBgColor:'#78baf3',
-            isShowFooter:true,
-            width:500,
-            height:300,
+            borderColor:'#78baf3',
+            borderRadius:10,
+            borderWidth:2,
+            width:600,
+            height:380,
             content:'<p class="introduce_msg">smartbox.js 是一款基于jquery 的<span style="color: red;">开源的</span>弹出层插件，它小巧但功能强大，允许用户在一个界面同时弹出多个对话框。弹出的内容支持多种形式，样式简洁多样。想要了解更多可以查看<a target="_blank" href="http://smartbox.huangsw.com/cn/introduce.html">官方文档</a>。 查看源码以及demo可以访问<a href="https://github.com/huangshuwei/jquery.smartbox" target="_blank">我的github</a>。</p>',
             isAutoShow:false,
-            closeType:'in'
+            closeType:'out',
+            overlayOpacity:0.1
         });
 
-        $("#setBgColor_open").click(function () {
-            $("#setBgColor").smartbox('open');
+        $("#otherSetting_open").click(function () {
+            $("#otherSetting").smartbox('open');
         });
     })
 </script>
     </div>
-    <!--设置头部底部背景色 End-->
+    <!--其他设置 End-->
 
     <!--结束了-->
     <div class="section">
